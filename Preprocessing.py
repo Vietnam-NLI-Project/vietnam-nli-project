@@ -6,6 +6,9 @@ from underthesea import text_normalize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import svm
 from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # Đọc dữ liệu và tách cột
 df = pd.read_excel('../Final_data_B1.xlsx')
@@ -20,6 +23,9 @@ def Standardize_sent(text):
     text = text.lower()
     # Xóa dấu chấm cuối câu và khoảng trắng thừa
     text = re.sub(r"\.(?=\s|$)", "", text)
+    # Xóa dấu phẩy
+    text = re.sub(r",", "", text)
+    # Xóa khoảng trắng đầu cuối
     text = text.strip()
     # Chuẩn hóa từ
     text = text_normalize(text)
@@ -38,9 +44,15 @@ df = df.drop(SENT, axis= 1)
 # Chia tập train, test
 mask = df['Quality_Status'].str.contains('Gold', na=False)
 
-train = df[mask]
-test = df[~mask]
+test = df[mask]
+train = df[~mask]
 
+# Xem độ lệch các nhãn trong train và test
+# sns.countplot(data = train, x = 'Final_Label')
+# sns.countplot(data = test, x = 'Final_Label')
+# plt.show()
+
+# Xóa các cột thừa trong X_train, X_test, y_train, y_test
 target = ['Final_Label', 'Quality_Status']
 
 X_train = train.drop(target, axis=1)
@@ -58,4 +70,24 @@ clf = svm.LinearSVC()
 clf.fit(X_train_encoded, y_train)
 y_pred = clf.predict(X_test_encoded)
 
+# Đánh giá qua các độ đo
 print(classification_report(y_test, y_pred))
+
+# Vẽ ma trận nhầm lẫn
+labels = [0, 1, 2]
+
+cm = confusion_matrix(y_test, y_pred, labels=labels)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(
+    cm,
+    annot=True,
+    fmt='d',
+    cmap='Blues',
+    xticklabels=labels,
+    yticklabels=labels
+)
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.title('Confusion Matrix')
+plt.show()
