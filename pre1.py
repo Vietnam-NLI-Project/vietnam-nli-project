@@ -1,0 +1,96 @@
+import torch
+import numpy as np
+import pandas as pd
+from transformers import AutoTokenizer, AutoModel
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier, VotingClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import classification_report
+from tqdm import tqdm
+from sklearn.ensemble import StackingClassifier
+from sklearn.linear_model import LogisticRegression
+from pyvi import ViTokenizer
+
+# ==========================================
+# 1. CẤU HÌNH PHOBERT
+# ==========================================
+
+df = pd.read_excel('Final_data_B1.xlsx')
+
+# Trước khi đưa vào phobert_embed
+df['Premise'] = df['Premise'].apply(lambda x: ViTokenizer.tokenize(str(x)))
+df['Hypothesis'] = df['Hypothesis'].apply(lambda x: ViTokenizer.tokenize(str(x)))
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+MODEL_NAME = "vinai/phobert-base"
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+phobert = AutoModel.from_pretrained(MODEL_NAME).to(device)
+phobert.eval()
+
+@torch.no_grad()
+def get_phobert_embeddings(texts, batch_size=16):
+    """Biến văn bản thành vector đặc trưng bằng PhoBERT"""
+    embeddings = []
+    for i in tqdm(range(0, len(texts), batch_size), desc="Extracting Features"):
+        batch = texts[i : i + batch_size]
+        # Tokenize và thêm các token đặc biệt <s> ... </s> </s> ... </s>
+        enc = tokenizer(batch, padding=True, truncation=True, max_length=256, return_tensors="pt").to(device)
+        outputs = phobert(**enc)
+        
+        # Sử dụng Mean Pooling (lấy trung bình các token để đại diện cho cả cặp câu)
+        pooled = outputs.last_hidden_state[:, 0, :]
+        
+        embeddings.append(pooled.cpu().numpy())
+    return np.vstack(embeddings)
+
+# ==========================================
+# 2. CHUẨN BỊ DỮ LIỆU
+# ==========================================
+# Tạo đầu vào cặp câu: Premise + sep + Hypothesis
+df['input_text'] = df['Premise'] + " " + tokenizer.sep_token + " " + df['Hypothesis']
+
+train_df = df[df['Dataset_Group'] == 'TRAIN']
+test_df = df[df['Dataset_Group'] == 'TEST']
+
+print(f"Đang xử lý {len(train_df)} mẫu train và {len(test_df)} mẫu test...")
+
+X_train_features = get_phobert_embeddings(train_df['input_text'].tolist())
+X_test_features = get_phobert_embeddings(test_df['input_text'].tolist())
+
+y_train = train_df['Final_Label'].values
+y_test = test_df['Final_Label'].values
+
+# ==========================================
+# 3. XÂY DỰNG MÔ HÌNH KẾT HỢP (SVM + RF)
+# ==========================================
+
+# Định nghĩa các mô hình thành phần
+svm_model = SVC(kernel='rbf', probability=True, C=1.0, gamma='scale', random_state=42)
+rf_model = RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42)
+
+ensemble_clf = StackingClassifier(
+    estimators=[
+        ('svm', SVC(kernel='rbf', probability=True, C=10)), # Thử tăng C
+        ('rf', RandomForestClassifier(n_estimators=300))
+    ],
+    final_estimator=LogisticRegression()
+)
+
+# Tạo Pipeline để chuẩn hóa dữ liệu trước khi đưa vào SVM/RF
+model_pipeline = Pipeline([
+    ('scaler', StandardScaler()), # Quan trọng cho SVM
+    ('classifier', ensemble_clf)
+])
+
+# Huấn luyện
+print("--- Đang huấn luyện mô hình Ensemble (PhoBERT + SVM + RF) ---")
+model_pipeline.fit(X_train_features, y_train)
+
+# ==========================================
+# 4. ĐÁNH GIÁ
+# ==========================================
+y_pred = model_pipeline.predict(X_test_features)
+
+print("\nKẾT QUẢ CUỐI CÙNG:")
+print(classification_report(y_test, y_pred, target_names=['Entailment (0)', 'Neutral (1)', 'Contradiction (2)']))
