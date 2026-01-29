@@ -62,7 +62,7 @@ Bạn có thể chọn 1 trong 3 cách sau để chạy mô hình:
 
 **Cách 1: Sử dụng Google Colab (Khuyên dùng 🚀)**
 Đây là cách nhanh nhất, không cần cài đặt môi trường trên máy.
-1. Truy cập [Google Colab](https://colab.research.google.com/).
+1. Truy cập [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Vietnam-NLI-Project/vietnam-nli-project/blob/main/notebooks/03_Advanced_PhoBERT.ipynb)
 2. Chọn tab **GitHub**.
 3. Dán đường link sau vào ô tìm kiếm: `https://github.com/Vietnam-NLI-Project/vietnam-nli-project`
 4. Chọn file `notebooks/03_Advanced_PhoBERT.ipynb` để mở mô hình tốt nhất (84%).
