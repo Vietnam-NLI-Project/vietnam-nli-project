@@ -18,13 +18,13 @@ Dự án đạt kết quả tốt nhất **84% Accuracy** với mô hình **PhoB
 * **Nhóm sinh viên thực hiện:** Nhóm 5
 
 ## Danh sách thành viên
-| STT | Họ tên | MSSV | Chức vụ | 
+| STT | Họ tên | MSSV | Chức vụ |
 |:---:|---|:---:|:---:|
-| 1 | **Huỳnh Hải Hiền** | **23520457** | **Nhóm trưởng**
-| 2 | **Trần Hoàng Long** | **23520890** | Thành viên
-| 3 | **Vũ Hoàng Hiệp** | **23520467** | Thành viên 
-| 4 | **Nguyễn Mạnh Tuấn** | **21522755** | Thành viên 
-| 5 | **Trần Bá Cảnh** | **22520144** | Thành viên 
+| 1 | **Huỳnh Hải Hiền** | **23520457** | **Nhóm trưởng** |
+| 2 | **Trần Hoàng Long** | **23520890** | Thành viên |
+| 3 | **Vũ Hoàng Hiệp** | **23520467** | Thành viên |
+| 4 | **Nguyễn Mạnh Tuấn** | **21522755** | Thành viên |
+| 5 | **Trần Bá Cảnh** | **22520144** | Thành viên |
 
 ## Công nghệ sử dụng
 <p>
@@ -64,7 +64,7 @@ Dành cho người muốn nghiên cứu sâu code và debug.
 
 **Bước 1: Clone repository**
 ```bash
-git clone [https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git](https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git)
+git clone https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git
 ```
 **Bước 2: Di chuyển vào thư mục**
 ```bash
