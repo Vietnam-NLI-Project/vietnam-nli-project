@@ -43,41 +43,37 @@ Dự án đạt kết quả tốt nhất **84% Accuracy** với mô hình **PhoB
 
 | STT | Mô hình | Loại | Độ chính xác (Accuracy) | Ghi chú |
 |:---:|---|:---:|:---:|---|
-| 1 | Multinomial Naive Bayes | Machine Learning | **0.4178%** | Baseline |
-| 2 | SVM (Support Vector Machine) | Machine Learning | **0.4648%** | Baseline |
+| 1 | Multinomial Naive Bayes | Machine Learning | **41.78%** | Baseline |
+| 2 | SVM (Support Vector Machine) | Machine Learning | **46.48%** | Baseline |
 | 3 | **PhoBERT (Fine-tuned)** | **Deep Learning** | **84%** | **Best Model**  |
 
 ## Hướng dẫn cài đặt & Chạy demo
 
-### 1. Clone repository
+Bạn có thể chọn 1 trong 3 cách sau:
+### Cách 1: Chạy nhanh trên Google Colab (Khuyên dùng)
+Không cần cài đặt, chạy ngay trên trình duyệt.
+1. Truy cập [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Vietnam-NLI-Project/vietnam-nli-project/blob/main/notebooks/03_Advanced_PhoBERT.ipynb)
+2. Chọn tab **GitHub**.
+3. Dán đường link sau vào ô tìm kiếm:
+   `https://github.com/Vietnam-NLI-Project/vietnam-nli-project`
+4. Chọn file `notebooks/03_Advanced_PhoBERT.ipynb` để xem mô hình tốt nhất (84%).
+5. Vào menu **Runtime** -> **Change runtime type** -> Chọn **T4 GPU** để chạy nhanh hơn.
+
+### Cách 2: Chạy trên máy cá nhân (Local Machine)
+Dành cho người muốn nghiên cứu sâu code và debug.
+
+**Bước 1: Clone repository**
 ```bash
-git clone [git clone [https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git](https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git)
+git clone [https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git](https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git)
 ```
-### 2. Di chuyển vào thư mục
+**Bước 2: Di chuyển vào thư mục**
 ```bash
 cd vietnam-nli-project
 ```
-### 3. Chạy dự án
-Bạn có thể chọn 1 trong 3 cách sau để chạy mô hình:
+**Bước 3: Chạy Notebook**
+Mở VS Code hoặc Jupyter Notebook và chạy file: `notebooks/03_Advanced_PhoBERT.ipynb`
 
-**Cách 1: Sử dụng Google Colab (Khuyên dùng)**
-Đây là cách nhanh nhất, không cần cài đặt môi trường trên máy.
-1. Truy cập [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Vietnam-NLI-Project/vietnam-nli-project/blob/main/notebooks/03_Advanced_PhoBERT.ipynb)
-2. Chọn tab **GitHub**.
-3. Dán đường link sau vào ô tìm kiếm: `https://github.com/Vietnam-NLI-Project/vietnam-nli-project`
-4. Chọn file `notebooks/03_Advanced_PhoBERT.ipynb` để mở mô hình tốt nhất (84%).
-5. Vào menu **Runtime** -> **Change runtime type** -> Chọn **T4 GPU** để chạy nhanh hơn.
-
-**Cách 2: Chạy trên máy cá nhân (Local Machine)**
-Yêu cầu máy tính đã cài đặt Python và Jupyter Notebook (hoặc VS Code).
-1. Mở thư mục dự án bằng **VS Code**.
-2. Mở terminal và cài đặt các thư viện cần thiết:
-   ```bash
-   pip install torch transformers scikit-learn pandas underthesea
-   ```
-3. Mở file `.ipynb` trong thư mục `notebooks` và bấm **Run All**.
-
-**Cách 3: Xem trực tiếp trên Kaggle**
+### Cách 3: Xem trực tiếp trên Kaggle
 Nếu bạn không muốn chạy code mà chỉ muốn xem kết quả và dữ liệu gốc:
 => Truy cập Dataset và Kernel tại: [**Dán_Link_Kaggle_Của_Bạn_Vào_Đây**]
 ## Dữ liệu (Dataset)
