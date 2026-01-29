@@ -51,11 +51,11 @@ Dự án đạt kết quả tốt nhất **84% Accuracy** với mô hình **PhoB
 
 ### 1. Clone repository
 ```bash
-git clone [https://github.com/Ten-GitHub-Cua-Ban/ViSNLI-Project.git](https://github.com/Ten-GitHub-Cua-Ban/ViSNLI-Project.git)
+git clone [git clone [https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git](https://github.com/Vietnam-NLI-Project/vietnam-nli-project.git)
 ```
 ### 2. Di chuyển vào thư mục
 ```bash
-cd ViSNLI-Project
+cd vietnam-nli-project
 ```
 ### 3. Chạy dự án
 Bạn có thể chọn 1 trong 3 cách sau để chạy mô hình:
@@ -64,7 +64,7 @@ Bạn có thể chọn 1 trong 3 cách sau để chạy mô hình:
 Đây là cách nhanh nhất, không cần cài đặt môi trường trên máy.
 1. Truy cập [Google Colab](https://colab.research.google.com/).
 2. Chọn tab **GitHub**.
-3. Dán đường link Repository này vào ô tìm kiếm.
+3. Dán đường link sau vào ô tìm kiếm: `https://github.com/Vietnam-NLI-Project/vietnam-nli-project`
 4. Chọn file `notebooks/03_Advanced_PhoBERT.ipynb` để mở mô hình tốt nhất (84%).
 5. Vào menu **Runtime** -> **Change runtime type** -> Chọn **T4 GPU** để chạy nhanh hơn.
 
