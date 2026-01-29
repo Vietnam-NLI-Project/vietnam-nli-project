@@ -75,7 +75,8 @@ Mở VS Code hoặc Jupyter Notebook và chạy file: `notebooks/03_Advanced_Pho
 
 ### Cách 3: Xem trực tiếp trên Kaggle
 Nếu bạn không muốn chạy code mà chỉ muốn xem kết quả và dữ liệu gốc:
-=> Truy cập Dataset và Kernel tại: [**Dán_Link_Kaggle_Của_Bạn_Vào_Đây**]
+
+=> **Truy cập Dataset và Kernel tại:** [**ViSNLI Dataset on Kaggle**](https://www.kaggle.com/datasets/hunhhahin/visnli/data)
 ## Dữ liệu (Dataset)
 Dữ liệu đã được tích hợp sẵn trong code thông qua link GitHub Raw để thuận tiện cho việc chạy demo.
 Tuy nhiên, phiên bản đầy đủ và mô tả chi tiết được lưu trữ tại Kaggle.
