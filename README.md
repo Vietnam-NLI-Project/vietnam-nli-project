@@ -49,7 +49,7 @@ Dự án đạt kết quả tốt nhất **84% Accuracy** với mô hình **PhoB
 
 ## Hướng dẫn cài đặt & Chạy demo
 
-Bạn có thể chọn 1 trong 3 cách sau:
+Bạn có thể chọn 1 trong 2 cách sau:
 ### Cách 1: Chạy nhanh trên Google Colab (Khuyên dùng)
 Không cần cài đặt, chạy ngay trên trình duyệt.
 1. Truy cập [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Vietnam-NLI-Project/vietnam-nli-project/blob/main/notebooks/03_Advanced_PhoBERT.ipynb)
@@ -73,13 +73,16 @@ cd vietnam-nli-project
 **Bước 3: Chạy Notebook**
 Mở VS Code hoặc Jupyter Notebook và chạy file: `notebooks/03_Advanced_PhoBERT.ipynb`
 
-### Cách 3: Xem trực tiếp trên Kaggle
-Nếu bạn không muốn chạy code mà chỉ muốn xem kết quả và dữ liệu gốc:
-
-=> **Truy cập Dataset và Kernel tại:** [**ViSNLI Dataset on Kaggle**](https://www.kaggle.com/datasets/hunhhahin/visnli/data)
 ## Dữ liệu (Dataset)
-Dữ liệu đã được tích hợp sẵn trong code thông qua link GitHub Raw để thuận tiện cho việc chạy demo.
-Tuy nhiên, phiên bản đầy đủ và mô tả chi tiết được lưu trữ tại Kaggle.
+Dữ liệu đã được tích hợp sẵn trong GitHub để phục vụ việc chạy mô hình.
+
+Tuy nhiên, để xem mô tả chi tiết và có cái nhìn rõ nhất về dữ liệu, hãy truy cập kho lưu trữ chính thức trên **Kaggle**. Tại đây hỗ trợ:
+
+* **Trực quan hóa (Data Visualization):** Xem biểu đồ phân phối và thống kê dữ liệu ngay trên web.
+* **Demo hiệu năng (Inference):** Chạy thử nghiệm Model ngay lập tức (Test nhanh kết quả).
+* **Pre-trained Models:** Tải xuống đầy đủ các phiên bản Model (`v1` & `v2`).
+
+**Truy cập ngay:** [**ViSNLI Dataset on Kaggle**](https://www.kaggle.com/datasets/hunhhahin/visnli/data)
 
 ---
 <p align="center">Made with ❤️ by <b>Group 5 (DS102)</b></p>
