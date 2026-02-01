@@ -78,8 +78,8 @@ Dữ liệu đã được tích hợp sẵn trong GitHub để phục vụ việ
 
 Tuy nhiên, để xem mô tả chi tiết và có cái nhìn rõ nhất về dữ liệu, hãy truy cập kho lưu trữ chính thức trên **Kaggle**. Tại đây hỗ trợ:
 
-* **Trực quan hóa (Data Visualization):** Xem biểu đồ phân phối và thống kê dữ liệu ngay trên web.
-* **Demo hiệu năng (Inference):** Chạy thử nghiệm Model ngay lập tức (Test nhanh kết quả).
+* **Trực quan hóa (Data Visualization):** Xem biểu đồ phân phối và thống kê dữ liệu.
+* **Demo hiệu năng (Inference):** Kiểm tra trực tiếp kết quả dự đoán của Model.
 * **Pre-trained Models:** Tải xuống đầy đủ các phiên bản Model (`v1` & `v2`).
 
 **Truy cập ngay:** [**ViSNLI Dataset on Kaggle**](https://www.kaggle.com/datasets/hunhhahin/visnli/data)
